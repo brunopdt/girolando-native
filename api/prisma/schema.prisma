@@ -1,0 +1,21 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model House {
+  id       Int     @id @default(autoincrement())
+  name     String  @db.VarChar(255)
+  address  String  @db.VarChar(255)
+  number   String  @db.VarChar(255)
+  district String? @db.VarChar(255)
+  zipcode  String  @db.VarChar(8)
+  city     String  @db.VarChar(255)
+  state    String  @db.VarChar(2)
+
+  @@map("houses")
+}
